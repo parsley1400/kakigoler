@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>kakigoler</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="jquery.min.js"></script>
+</head>
+<body>
+<nav>
+<a href="/search">検索</a>
+<% if session[:user] == nil %>
+<a href="/signup">ユーザー登録</a>
+<% else %>
+<a href="/signout">サインアウト</a>
+<a href="/list">お気に入りリスト</a>
+<% end %>
+</nav>
+
+<%= yield %>
+
+<script type="text/javascript" src="/assets/script.js"></script>
+</body>
+</html>

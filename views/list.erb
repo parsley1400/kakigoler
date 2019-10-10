@@ -1,0 +1,33 @@
+<nav>
+  <a href="/">戻る</a>
+</nav>
+
+<div class="box">
+<% unless @lists == nil %>
+<% @lists.each do |list| %>
+<div class="set">
+<% unless Contribution.find(list.contribution_id).image.empty? %>
+	<img src="<%= Contribution.find(list.contribution_id).image %>">
+<% end %>
+  <% tagids = ContributionTag.where(contribution_id: list.contribution_id) %>
+	<p><% tagids.each do |tagid| %>
+	#<%= Tag.find(tagid.tag_id).name %>
+	<% end %></p><br>
+	<%= Contribution.find(list.contribution_id).sweet_id %><br>
+	<%= Contribution.find(list.contribution_id).ice_id %><br>
+	<%= Contribution.find(list.contribution_id).size_id %><br>
+	<%= Contribution.find(list.contribution_id).plo_id %><br>
+	<%= Contribution.find(list.contribution_id).price_id %><br>
+  <%= Contribution.find(list.contribution_id).store  %><br>
+  <%= Contribution.find(list.contribution_id).icename  %><br>
+	<%= Contribution.find(list.contribution_id).station  %><br>
+  <form action="/list/<%= Contribution.find(list.contribution_id).id %>/favorite" method="post">
+		<input type="submit" value="♡" style="
+	<% if Contribution.find(list.contribution_id).favorite == true %>
+	background-color:pink;
+	<% end %>">
+	</form>
+</div>
+<% end %>
+<% end %>
+</div>

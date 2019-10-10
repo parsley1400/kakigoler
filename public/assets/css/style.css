@@ -1,0 +1,74 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+html{
+  height:100%;
+}
+
+nav{
+  background-color:#00b8ee;
+  height:60px;
+}
+
+nav a{
+  float:right;
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+  margin:10px;
+}
+
+body{
+  background-color:#eaf4f9;
+}
+
+.toko{
+  text-decoration:none;
+  position:fixed;
+  color:#000;
+  font-size:30px;
+  bottom:30px;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.box{
+  width:1300px;
+  margin:20px auto;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap-reverse;
+}
+
+.set{
+  margin:10px;
+  padding:5px;
+  text-align:center;
+  background-color:#fff;
+  overflow:hidden;
+}
+
+.box img{
+  width:230px;
+  height:230px;
+  object-fit:cover;
+}
+
+.new{
+  text-align:center;
+}
+
+.new input{
+  width:400px;
+}
+
+.tag{
+  overflow:hidden;
+
+}
+
+.heart{
+  height:20px;
+}

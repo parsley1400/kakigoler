@@ -1,0 +1,37 @@
+<a class="toko" href="/new">投稿</a>
+
+<div class="box">
+<% unless @contributions == nil %>
+<% @contributions.each do |contribution| %>
+<div class="set">
+<% unless contribution.image.empty? %>
+	<img src="<%= contribution.image %>"><br>
+<% end %>
+	<% tagids = ContributionTag.where(contribution_id: contribution.id) %>
+	<p class="tag"><% tagids.each do |tagid| %>
+	#<%= Tag.find(tagid.tag_id).name %>
+	<% end %></p>
+
+
+	<%= contribution.sweet_id %><br>
+	<%= contribution.ice_id %><br>
+	<%= contribution.size_id %><br>
+	<%= contribution.plo_id %><br>
+	<%= contribution.price_id %><br>
+	<%= contribution.store %><br>
+	<%= contribution.icename %><br>
+	<%= contribution.station  %><br>
+
+	<% if session[:user] %>
+	<form action="/<%= contribution.id %>/favorite" method="post">
+	<% if contribution.favorite == true %>
+	<input class="heart" type="image" src="assets/image/heart2.png">
+	<% else %>
+	<input class="heart" type="image" src="assets/image/heart1.png">
+	<% end %>
+	</form>
+	<% end %>
+</div>
+<% end %>
+<% end %>
+</div>
