@@ -5,8 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
   <title>kakigoler</title>
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script src="/assets/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="assets/lazy-line-painter/lazy-line-painter-1.9.6.min.js"></script>
+<script>
+(function(){
+            document.onreadystatechange = () => {
+              if (document.readyState === 'complete') {
+                /**
+                 * Setup your Lazy Line element.
+                 * see README file for more settings
+                 */
+                let el = document.querySelector('#kakigori');
+                let myAnimation = new LazyLinePainter(el, {"ease":"easeInOutQuad","strokeWidth":4,"strokeOpacity":1,"strokeColor":"#ffffff"});
+                myAnimation.paint();
+              }
+            }
+          })();
+</script>
 </head>
+
 <body>
 
 <%= yield %>

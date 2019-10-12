@@ -23,6 +23,10 @@ before do
 end
 
 get '/' do
+  erb :load
+end
+
+get '/top' do
   @contributions = Contribution.all
 
   erb :index
@@ -41,7 +45,7 @@ post '/signup' do
   if user.persisted?
     session[:user] = user.id
   end
-  redirect '/'
+  redirect '/top'
 end
 
 post '/signin' do
@@ -56,7 +60,7 @@ post '/signin' do
       fav.save!
     end
   end
-    redirect '/'
+    redirect '/top'
   else
     redirect '/signin'
   end
@@ -69,7 +73,7 @@ get '/signout' do
     contribution.save!
   end
   session[:user] = nil
-  redirect '/'
+  redirect '/top'
 end
 
 get '/new' do
@@ -90,14 +94,11 @@ post '/new' do
       tabletag = Tag.find_or_create_by({name: tag})
       ContributionTag.create({tag_id: tabletag.id, contribution_id: contribution.id})
     end
-  redirect '/'
+  redirect '/top'
 end
 
 get '/list' do
   @lists = Favorite.where(user_id: session[:user])
-  # @lists.each do |list|
-  # Contribution.where(id: list.contribution_id)
-  # end
   erb :list
 end
 
@@ -119,7 +120,7 @@ post '/:id/favorite' do
     contribution.save!
   end
   end
- redirect '/'
+ redirect '/top'
 end
 
 post '/list/:id/favorite' do
@@ -290,5 +291,5 @@ end
 post '/:id/delete' do
   this = Contribution.find(params[:id])
   this.delete
-  redirect '/'
+  redirect '/top'
 end

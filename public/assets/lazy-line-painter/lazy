@@ -1,2 +1,43 @@
 
+  <script src="assets/lazy-line-painter/lazy-line-painter-1.9.6.min.js"></script>
+<script>
+$(function() {
+  var h = $(window).height();
+
+  $('#wrap').css('display','none');
+  $('#loader-bg ,#loader').height(h).css('display','block');
+});
+
+$(window).load(function () { //全ての読み込みが完了したら実行
+  $('#loader-bg').delay(900).fadeOut(800);
+  $('#loader').delay(600).fadeOut(300);
+  $('#wrap').css('display', 'block');
+});
+
+//10秒たったら強制的にロード画面を非表示
+$(function(){
+  setTimeout('stopload()',10000);
+});
+
+function stopload(){
+  $('#wrap').css('display','block');
+  $('#loader-bg').delay(900).fadeOut(800);
+  $('#loader').delay(600).fadeOut(300);
+}
+
+(function(){
+            document.onreadystatechange = () => {
+              if (document.readyState === 'complete') {
+                /**
+                 * Setup your Lazy Line element.
+                 * see README file for more settings
+                 */
+                let el = document.querySelector('#kakigori');
+                let myAnimation = new LazyLinePainter(el, {"ease":"easeInOutQuad","strokeWidth":3,"strokeOpacity":1,"strokeColor":"#ffffff"});
+                myAnimation.paint();
+              }
+            }
+          })();
+</script>
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.15 183.85" data-llp-composed="true" id="kakigori" class="lazy-line-painter"><defs><style>.cls-1,.cls-2{fill:none;stroke-miterlimit:10;stroke-width:5px;}.cls-1{stroke:#1faddd;}.cls-2{stroke:#d8355e;}</style></defs><title>アセット 22</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_3" data-name="レイヤー 3"><path class="cls-1" d="M10.1,102.09H125.5s-4.43,15-5.41,25.33S82.48,147.15,74,148.1v22.5s15.37,1.45,19,10.75H42.65s6.64-10.75,19-10.75V148.13s-36.33-4-47.75-22.91C13.88,125.22,13,108.37,10.1,102.09Z" data-llp-id="kakigori-0" data-llp-duration="990" data-llp-delay="0" fill-opacity="0" style="" data-llp-stroke-join="" data-llp-stroke-cap=""/><path class="cls-1" d="M125.55,58.29c21.1,23.23,0,43.8,0,43.8" data-llp-id="kakigori-1" data-llp-duration="990" data-llp-delay="990" fill-opacity="0" style="" data-llp-stroke-join="" data-llp-stroke-cap=""/><polyline class="cls-1" points="129.45 66.36 160.73 12.18 152.55 7.45 125.5 54.21" data-llp-id="kakigori-2" data-llp-duration="990" data-llp-delay="1980" fill-opacity="0" style="" data-llp-stroke-join="" data-llp-stroke-cap=""/><path class="cls-1" d="M11.86,58.51c-21.09,23.24.06,43.8.06,43.8" data-llp-id="kakigori-3" data-llp-duration="990" data-llp-delay="2970" fill-opacity="0" style="" data-llp-stroke-join="" data-llp-stroke-cap=""/></g><g id="レイヤー_4" data-name="レイヤー 4"><path class="cls-2" d="M11.15,57.51s24.18,48,58.15,0c0,0,13-21.13,32.73,0,0,0,14.72,18.4,23.47,0,0,0,6.8-22-19.66-22.65,0,0,0-46.58-41.54-24.31,0,0-28.44-24.55-33.85,12.09C30.45,22.64,3,25.28,11.15,57.51Z" data-llp-id="kakigori-4" data-llp-duration="990" data-llp-delay="3960" fill-opacity="0" style="" data-llp-stroke-join="" data-llp-stroke-cap=""/></g></g></svg>

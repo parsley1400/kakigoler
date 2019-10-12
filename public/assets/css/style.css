@@ -74,6 +74,26 @@ html{
   font-family:'myFont';
 }
 
+.load{
+  height:100vh;
+  width:100%;
+  background-color:#00b8ee;
+  text-align:center;
+  color:#fff;
+}
+
+#kakigori{
+  width:250px;
+  height:250px;
+  margin-top:200px;
+  margin-bottom:50px;
+}
+
+.load h1{
+  font-family:'myfont2';
+  margin-bottom:20px;
+}
+
 img{
   object-fit:cover;
 }
