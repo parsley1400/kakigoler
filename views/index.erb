@@ -1,26 +1,70 @@
-<a class="toko" href="/new">投稿</a>
+<nav id="nav">
+<img class="logo" src="/assets/image/logo.png">
+<a class="gosearch" href="/search"><img src="assets/image/search.png" width="30px"></a>
+<% if session[:user] == nil %>
+<a class="inuser" href="/signup"><img src="assets/image/signin.png" width="30px"></a>
+<% else %>
+<a class="outuser" href="/signout"><img src="assets/image/signout.png" width="35px"></a>
+<a class="golist" href="/list"><img src="assets/image/favorite.png" width="37px"></a>
+<% end %>
+</nav>
+
+<a class="toko" href="/new">Post</a>
+<a class="top" href="#nav"><img src="assets/image/top.png" width="30px"></a>
 
 <div class="box">
 <% unless @contributions == nil %>
 <% @contributions.each do |contribution| %>
 <div class="set">
 <% unless contribution.image.empty? %>
-	<img src="<%= contribution.image %>"><br>
+	<img class="tokoimg" src="<%= contribution.image %>"><br>
 <% end %>
 	<% tagids = ContributionTag.where(contribution_id: contribution.id) %>
 	<p class="tag"><% tagids.each do |tagid| %>
 	#<%= Tag.find(tagid.tag_id).name %>
 	<% end %></p>
 
+	<div class="yoko"><%= contribution.store %></div><br>
+	<div class="yoko"><%= contribution.icename %></div><br>
+	<div class="yoko"><%= contribution.station  %></div><br>
 
-	<%= contribution.sweet_id %><br>
-	<%= contribution.ice_id %><br>
-	<%= contribution.size_id %><br>
-	<%= contribution.plo_id %><br>
-	<%= contribution.price_id %><br>
-	<%= contribution.store %><br>
-	<%= contribution.icename %><br>
-	<%= contribution.station  %><br>
+	<div class="hyoka">
+	<div class="ml1">控えめ</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if contribution.sweet_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.sweet_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.sweet_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.sweet_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr1">甘い</div><br>
+	<div class="ml2">サラサラ</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if contribution.ice_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.ice_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.ice_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.ice_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr2">フワフワ</div><br>
+	<div class="ml3">軽い</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if contribution.size_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.size_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.size_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.size_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr3">重い</div><br>
+	<div class="ml4">簡易的</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if contribution.plo_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.plo_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.plo_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.plo_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr4">本格的</div><br>
+	<div class="ml5">500円</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if contribution.price_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.price_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.price_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if contribution.price_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr5">2000円</div><br>
+	</div>
 
 	<% if session[:user] %>
 	<form action="/<%= contribution.id %>/favorite" method="post">

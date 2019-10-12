@@ -1,16 +1,21 @@
+<nav>
+<img class="logo" src="/assets/image/logo.png">
+<a class="back" href="/"><img src="assets/image/back.png" width="40px"></a>
+</nav>
+
 <div class="new">
 <form action="/new" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" accept="image/*"><br>
-  <p>甘さ<br>控えめ<input type="range" min="1" max="5" step="1" name="sweet">甘い</p><br>
-  <p>氷のタイプ<br>サラサラ<input type="range" min="1" max="5" step="1" name="ice">フワフワ</p><br>
-  <p>ボリューム<br>軽い<input type="range" min="1" max="5" step="1" name="size">重い</p><br>
-  <p>本格度<br>簡易的<input type="range" min="1" max="5" step="1" name="plo">本格的</p><br>
-  <p>値段<br>500円<input type="range" min="1" max="5" step="1" name="price">2000円</p><br>
-  <p>店名<br><input type="text" name="store"></p><br>
-  <p>氷名<br><input type="text" name="icename"></p><br>
-  <p>最寄駅<br><input type="text" name="station"></p><br>
-  <p>タグ<br><input type="text" name="tag" placeholder="複数のタグを投稿する時は間に半角スペースを入れてください"></p><br>
+  <p>画像<br><input type="file" name="image" accept="image/*"></p><br>
+  <p>タグ<br><input class="newtag" type="text" name="tag" placeholder="複数のタグを投稿する時は間に半角スペースを入れてください"></p><br>
+  <p>店名<br><input class="text" type="text" name="store"></p><br>
+  <p>氷名<br><input class="text" type="text" name="icename"></p><br>
+  <p>最寄駅<br><input class="text" type="text" name="station"></p><br>
+  <p>甘さ<br>控えめ<input class="range" type="range" min="1" max="5" step="1" name="sweet">甘い</p><br>
+  <p>氷のタイプ<br>サラサラ<input class="range" type="range" min="1" max="5" step="1" name="ice">フワフワ</p><br>
+  <p>ボリューム<br>軽い<input class="range" type="range" min="1" max="5" step="1" name="size">重い</p><br>
+  <p>本格度<br>簡易的<input class="range" type="range" min="1" max="5" step="1" name="plo">本格的</p><br>
+  <p>値段<br>500円<input class="range" type="range" min="1" max="5" step="1" name="price">2000円</p><br>
 
-  <input type="submit" value="投稿">
+  <input class="submit" type="submit" value="POST">
 </form>
 </div>

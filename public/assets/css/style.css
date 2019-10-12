@@ -1,3 +1,56 @@
+@media screen and (min-width: 1320px){
+  .box{
+    width:1320px;
+  }
+}
+
+@media screen and (max-width: 1320px){
+  .box{
+    width:990px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .box{
+    width:660px;
+  }
+}
+
+@media screen and (max-width: 660px){
+  .box{
+    width:330px;
+  }
+}
+
+@media screen and (min-width: 870px){
+  .searchbtn{
+    width:870px;
+    margin:100px auto;
+    height:30px;
+  }
+
+  .searchbtn a{
+    margin:50px;
+    display:inline;
+    padding:20px 50px;
+  }
+}
+
+@media screen and (max-width: 870px){
+  .searchbtn{
+    width:250px;
+    margin:70px auto;
+    text-align:center;
+    height:200px;
+  }
+
+  .searchbtn a{
+    margin:20px;
+    padding:15px 30px;
+    display:block;
+  }
+}
+
 *{
   margin:0;
   padding:0;
@@ -5,41 +58,172 @@
 
 html{
   height:100%;
+  width:100%;
+  font-family:'myFont';
+}
+
+img{
+  object-fit:cover;
+}
+
+@font-face{
+  font-family: 'myFont';
+  src: url('../font/kokugl.woff') format('woff');
+}
+
+@font-face{
+  font-family: 'myFont2';
+  src: url('../font/chameron.woff') format('woff');
+}
+
+.sign{
+  height:100vh;
+  width:100%;
+  text-align:center;
+  color:#000;
+}
+
+.sign input{
+  height:20px;
+  margin:5px;
+  border-radius:5px;
+}
+
+.nyuryoku input{
+  width:200px;
+}
+
+.submit{
+  width:100px;
+}
+
+.kaki{
+  margin-top:80px;
+  margin-bottom:40px;
+  padding-left:25px;
+}
+
+.go{
+  color:#000;
+  text-decoration:none;
+  font-size:20px;
+  display:inline-block;
+  margin:10px;
 }
 
 nav{
   background-color:#00b8ee;
-  height:60px;
+  height:70px;
+  width:100%;
+  position:relative;
 }
 
 nav a{
   float:right;
-  color:#fff;
+  background-color:#fff;
   text-decoration:none;
   font-size:15px;
-  margin:10px;
+  position:absolute;
+  top:10px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+
+.gosearch{
+  right:10px;
+}
+
+.gosearch img{
+  margin-top:6px;
+  margin-left:8px;
+}
+
+.inuser{
+  right:70px;
+}
+
+.inuser img{
+  margin-top:7px;
+  margin-left:10px;
+}
+
+.outuser{
+  right:70px;
+}
+
+.outuser img{
+  margin-top:7px;
+  margin-left:9px;
+}
+
+.golist{
+  right:130px;
+}
+
+.golist img{
+  margin-top:10px;
+  margin-left:6px;
+}
+
+.back{
+  left:10px;
+}
+
+.back img{
+  margin-top:12px;
+  margin-left:6px;
 }
 
 body{
-  background-color:#eaf4f9;
+  background-color:#fff;
+  width:100%;
+}
+
+.logo{
+  display:block;
+  margin:0 auto;
+  padding:12px;
+  width:150px;
 }
 
 .toko{
+  z-index:3;
   text-decoration:none;
   position:fixed;
-  color:#000;
+  color:#fff;
   font-size:30px;
   bottom:30px;
-left: 50%;
-transform: translate(-50%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:#00b8ee;
+  padding:20px 50px;
+  border-radius:35px;
+  font-family:'myfont2';
+}
+
+.top{
+  z-index:3;
+  text-decoration:none;
+  position:fixed;
+  background-color:#00b8ee;
+  width:70px;
+  height:70px;
+  border-radius:35px;
+  right:60px;
+  bottom:60px;
+}
+
+.top img{
+  margin-top:10px;
+  margin-left:20px;
 }
 
 .box{
-  width:1300px;
   margin:20px auto;
   display:flex;
   flex-direction:row;
-  flex-wrap:wrap-reverse;
+  flex-wrap:wrap;
 }
 
 .set{
@@ -48,27 +232,187 @@ transform: translate(-50%, -50%);
   text-align:center;
   background-color:#fff;
   overflow:hidden;
+  box-shadow:0px 0px 10px 3px #9fc2cc;
+  position:relative;
 }
 
-.box img{
-  width:230px;
-  height:230px;
-  object-fit:cover;
+.tokoimg{
+  width:300px;
+  height:300px;
 }
 
 .new{
   text-align:center;
+  overflow:hidden;
+  margin-top:60px;
 }
 
 .new input{
+  height:20px;
+  border-radius:5px;
+}
+
+.range{
+  width:200px;
+}
+
+.text{
+  width:300px;
+}
+
+.newtag{
   width:400px;
+}
+
+.hyoka img{
+  width:15px;
+  height:15px;
+  margin:0 2px;
+}
+
+.hyoka{
+  font-size:15px;
 }
 
 .tag{
   overflow:hidden;
-
+  margin-bottom:10px;
+  font-size:20px;
+  padding:5px;
+  border-bottom:0.5px solid #000;
 }
 
 .heart{
   height:20px;
+  position:absolute;
+  top:312px;
+  right:10px;
+}
+
+.storeimg{
+  width:20px;
+  height:20px;
+  position:absolute;
+  bottom:168px;
+  right:220px;
+}
+
+.iceimg{
+  width:20px;
+  height:20px;
+  position:absolute;
+  bottom:138px;
+  right:220px;
+}
+
+.stationimg{
+  width:18px;
+  height:18px;
+  position:absolute;
+  bottom:108px;
+  right:220px;
+}
+
+.yoko{
+  margin:-3px;
+}
+
+.hyoka .yoko{
+  margin:-6px;
+}
+
+.ml1{
+  position:absolute;
+  right:220px;
+  bottom:95px;
+}
+
+.mr1{
+  position:absolute;
+  left:220px;
+  bottom:95px;
+}
+
+.ml2{
+  position:absolute;
+  right:220px;
+  bottom:75px;
+}
+
+.mr2{
+  position:absolute;
+  left:220px;
+  bottom:75px;
+}
+
+.ml3{
+  position:absolute;
+  right:220px;
+  bottom:55px;
+}
+
+.mr3{
+  position:absolute;
+  left:220px;
+  bottom:55px;
+}
+
+.ml4{
+  position:absolute;
+  right:220px;
+  bottom:35px;
+}
+
+.mr4{
+  position:absolute;
+  left:220px;
+  bottom:35px;
+}
+
+.ml5{
+  position:absolute;
+  right:220px;
+  bottom:15px;
+}
+
+.mr5{
+  position:absolute;
+  left:220px;
+  bottom:15px;
+}
+
+/* .searchbtn{
+  width:870px;
+  height:100px;
+  margin:80px auto;
+}
+
+.searchbtn a{
+  text-decoration:none;
+  font-size:20px;
+  margin:50px;
+  background-color:#00b8ee;
+  color:#fff;
+  padding:20px 50px;
+  border-radius:35px;
+} */
+
+.searchbtn a{
+  text-decoration:none;
+  font-size:20px;
+  background-color:#00b8ee;
+  color:#fff;
+  border-radius:35px;
+}
+
+.content {
+  display: none;
+}
+
+.content:target {
+  display: block;
+}
+
+.bun{
+  margin-top:50px;
 }

@@ -3,6 +3,7 @@ Bundler.require
 require 'sinatra/reloader' if development?
 
 require './models'
+require 'active_support/core_ext/object/try'
 
 enable :sessions
 
@@ -147,11 +148,141 @@ get '/search' do
 end
 
 post '/search' do
-  if params[:search].include?("sweet")
-    @sweet = Contribution.where(sweet_id: params[:sweet])
+  if params[:search].try(:include?, "store")
+    @results = Contribution.where(store: params[:store])
+    if params[:search].try(:include?, "icename")
+      @results = Contribution.where(store: params[:store], icename: params[:icename])
+      if params[:search].try(:include?, "station")
+        @results = Contribution.where(store: params[:store], icename: params[:icename], station: params[:station])
+      end
+    elsif params[:search].try(:include?, "station")
+      @results = Contribution.where(store: params[:store], station: params[:station])
+    end
+  elsif params[:search].try(:include?, "icename")
+    @results = Contribution.where(icename: params[:icename])
+    if params[:search].try(:include?, "station")
+      @results = Contribution.where(icename: params[:icename], station: params[:station])
+    end
+  elsif params[:search].try(:include?, "station")
+    @results = Contribution.where(station: params[:station])
+
+
+  elsif params[:search].try(:include?, "sweet")
+    @results = Contribution.where(sweet_id: params[:sweet])
+    if params[:search].try(:include?, "ice")
+      @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice])
+      if params[:search].try(:include?, "size")
+        @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], size_id: params[:size])
+        if params[:search].try(:include?, "plo")
+          @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], size_id: params[:size],plo_id: params[:plo])
+          if params[:search].try(:include?, "price")
+            @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], size_id: params[:size],plo_id: params[:plo], price_id: params[:price])
+          end
+        elsif params[:search].try(:include?, "price")
+          @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], size_id: params[:size],price_id: params[:price])
+        end
+      elsif params[:search].try(:include?, "plo")
+        @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], plo_id: params[:plo])
+        if params[:search].try(:include?, "price")
+          @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], plo_id: params[:plo], price_id: params[:price])
+        end
+      elsif  params[:search].try(:include?, "price")
+        @results = Contribution.where(sweet_id: params[:sweet], ice_id: params[:ice], price_id: params[:price])
+      end
+    elsif params[:search].try(:include?, "size")
+      @results = Contribution.where(sweet_id: params[:sweet], size_id: params[:size])
+      if params[:search].try(:include?, "plo")
+        @results = Contribution.where(sweet_id: params[:sweet], size_id: params[:size],plo_id: params[:plo])
+        if params[:search].try(:include?, "price")
+          @results = Contribution.where(sweet_id: params[:sweet], size_id: params[:size],plo_id: params[:plo], price_id: params[:price])
+        end
+      elsif params[:search].try(:include?, "price")
+        @results = Contribution.where(sweet_id: params[:sweet], size_id: params[:size],price_id: params[:price])
+      end
+    elsif params[:search].try(:include?, "plo")
+      @results = Contribution.where(sweet_id: params[:sweet], plo_id: params[:plo])
+      if params[:search].try(:include?, "price")
+        @results = Contribution.where(sweet_id: params[:sweet], plo_id: params[:plo], price_id: params[:price])
+      end
+    elsif  params[:search].try(:include?, "price")
+      @results = Contribution.where(sweet_id: params[:sweet], price_id: params[:price])
+    end
+  elsif params[:search].try(:include?, "ice")
+    @results = Contribution.where(ice_id: params[:ice])
+    if params[:search].try(:include?, "size")
+      @results = Contribution.where(ice_id: params[:ice], size_id: params[:size])
+      if params[:search].try(:include?, "plo")
+        @results = Contribution.where(ice_id: params[:ice], size_id: params[:size],plo_id: params[:plo])
+        if params[:search].try(:include?, "price")
+          @results = Contribution.where(ice_id: params[:ice], size_id: params[:size],plo_id: params[:plo], price_id: params[:price])
+        end
+      elsif params[:search].try(:include?, "price")
+        @results = Contribution.where(ice_id: params[:ice], size_id: params[:size],price_id: params[:price])
+        end
+    elsif params[:search].try(:include?, "plo")
+      @results = Contribution.where(ice_id: params[:ice], plo_id: params[:plo])
+      if params[:search].try(:include?, "price")
+        @results = Contribution.where(ice_id: params[:ice], plo_id: params[:plo], price_id: params[:price])
+      end
+    elsif  params[:search].try(:include?, "price")
+      @results = Contribution.where(ice_id: params[:ice], price_id: params[:price])
+    end
+  elsif params[:search].try(:include?, "size")
+    @results = Contribution.where(size_id: params[:size])
+    if params[:search].try(:include?, "plo")
+      @results = Contribution.where(size_id: params[:size],plo_id: params[:plo])
+      if params[:search].try(:include?, "price")
+        @results = Contribution.where(size_id: params[:size],plo_id: params[:plo], price_id: params[:price])
+      end
+    elsif params[:search].try(:include?, "price")
+      @results = Contribution.where(size_id: params[:size],price_id: params[:price])
+    end
+  elsif params[:search].try(:include?, "plo")
+    @results = Contribution.where(plo_id: params[:plo])
+      if params[:search].try(:include?, "price")
+        @results = Contribution.where(plo_id: params[:plo], price_id: params[:price])
+      end
+  elsif  params[:search].try(:include?, "price")
+    @results = Contribution.where(price_id: params[:price])
+
+
+  elsif params[:search].try(:include?, "tag")
+    tag = Tag.find_by(name: params[:tag])
+    tagids = ContributionTag.where(tag_id:tag.id)
+    tagids.each do |tagid|
+      @results = Contribution.where(id:tagid.contribution_id)
+    end
+
+
+  else
+    @results = Contribution.none
   end
-  if params[:search].include?("ice")
-    @ice = Contribution.where(ice_id: params[:ice])
-  end
+  session[:result] = @results
+  redirect '/result'
+end
+
+get '/result' do
+  @results = session[:result]
   erb :result
+end
+
+post '/result/:id/favorite' do
+  if session[:user]
+  this = Contribution.find(params[:id])
+  this.favorite = !this.favorite
+  this.save
+  favuser = Favorite.find_by(user_id: session[:user], contribution_id: params[:id])
+    if favuser
+      favuser.delete
+    else
+      Favorite.create({user_id: session[:user], contribution_id: params[:id]})
+    end
+  else
+    contributions = Contribution.all
+    contributions.each do |contribution|
+    contribution.favorite = false
+    contribution.save!
+  end
+  end
+ redirect '/result'
 end

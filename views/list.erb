@@ -1,5 +1,8 @@
 <nav>
-  <a href="/">戻る</a>
+<img class="logo" src="/assets/image/logo.png">
+<a class="gosearch" href="/search"><img src="assets/image/search.png" width="30px"></a>
+<a class="outuser" href="/signout"><img src="assets/image/signout.png" width="35px"></a>
+<a class="back" href="/"><img src="assets/image/back.png" width="40px"></a>
 </nav>
 
 <div class="box">
@@ -7,26 +10,64 @@
 <% @lists.each do |list| %>
 <div class="set">
 <% unless Contribution.find(list.contribution_id).image.empty? %>
-	<img src="<%= Contribution.find(list.contribution_id).image %>">
+	<img class="tokoimg" src="<%= Contribution.find(list.contribution_id).image %>">
 <% end %>
   <% tagids = ContributionTag.where(contribution_id: list.contribution_id) %>
-	<p><% tagids.each do |tagid| %>
+	<p class="tag"><% tagids.each do |tagid| %>
 	#<%= Tag.find(tagid.tag_id).name %>
 	<% end %></p><br>
-	<%= Contribution.find(list.contribution_id).sweet_id %><br>
-	<%= Contribution.find(list.contribution_id).ice_id %><br>
-	<%= Contribution.find(list.contribution_id).size_id %><br>
-	<%= Contribution.find(list.contribution_id).plo_id %><br>
-	<%= Contribution.find(list.contribution_id).price_id %><br>
-  <%= Contribution.find(list.contribution_id).store  %><br>
-  <%= Contribution.find(list.contribution_id).icename  %><br>
-	<%= Contribution.find(list.contribution_id).station  %><br>
-  <form action="/list/<%= Contribution.find(list.contribution_id).id %>/favorite" method="post">
-		<input type="submit" value="♡" style="
+
+	<div class="yoko"><%= Contribution.find(list.contribution_id).store  %></div><br>
+	<div class="yoko"><%= Contribution.find(list.contribution_id).icename %></div><br>
+	<div class="yoko"><%= Contribution.find(list.contribution_id).station  %></div><br>
+
+	<div class="hyoka">
+	<div class="ml1">控えめ</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if Contribution.find(list.contribution_id).sweet_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).sweet_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).sweet_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).sweet_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr1">甘い</div><br>
+	<div class="ml2">サラサラ</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if Contribution.find(list.contribution_id).ice_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).ice_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).ice_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).ice_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr2">フワフワ</div><br>
+	<div class="ml3">軽い</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if Contribution.find(list.contribution_id).size_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).size_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).size_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).size_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr3">重い</div><br>
+	<div class="ml4">簡易的</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if Contribution.find(list.contribution_id).plo_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).plo_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).plo_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).plo_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr4">本格的</div><br>
+	<div class="ml5">500円</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if Contribution.find(list.contribution_id).price_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).price_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if Contribution.find(list.contribution_id).price_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+  <% if Contribution.find(list.contribution_id).price_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr5">2000円</div><br>
+	</div>
+
+	<% if session[:user] %>
+	<form action="/list/<%= Contribution.find(list.contribution_id).id %>/favorite" method="post">
 	<% if Contribution.find(list.contribution_id).favorite == true %>
-	background-color:pink;
-	<% end %>">
+	<input class="heart" type="image" src="assets/image/heart2.png">
+	<% else %>
+	<input class="heart" type="image" src="assets/image/heart1.png">
+	<% end %>
 	</form>
+	<% end %>
 </div>
 <% end %>
 <% end %>

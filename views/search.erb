@@ -1,25 +1,44 @@
-<div class="">
-<form action="/search" method="post">
-  <p>甘さ<br><input type="checkbox" name="search[]" value="sweet">
-  控えめ<input type="range" min="1" max="5" step="1" name="sweet">甘い</p><br>
-  <p>氷のタイプ<br><input type="checkbox" name="search[]" value="ice">
-  サラサラ<input type="range" min="1" max="5" step="1" name="ice">フワフワ</p><br>
-  <p>ボリューム<br><input type="checkbox" name="search[]" value="size">
-  軽い<input type="range" min="1" max="5" step="1" name="size">重い</p><br>
-  <p>本格度<br><input type="checkbox" name="search[]" value="plo">
-  簡易的<input type="range" min="1" max="5" step="1" name="plo">本格的</p><br>
-  <p>値段<br><input type="checkbox" name="search[]" value="price">
-  500円<input type="range" min="1" max="5" step="1" name="price">2000円</p><br>
-  <p>店名<br><input type="checkbox" name="search[]" value="store">
-  <input type="text" name="store"></p><br>
-  <p>氷名<br><input type="checkbox" name="search[]" value="icename">
-  <input type="text" name="icename"></p><br>
-  <p>最寄駅<br><input type="checkbox" name="search[]" value="station">
-  <input type="text" name="station"></p><br>
-  <p>タグ<br><input type="checkbox" name="search[]" value="tag">
-  <input type="text" name="tag" placeholder="複数のタグを投稿する時は間に半角スペースを入れてください"></p><br>
+<nav id="block">
+<img class="logo" src="/assets/image/logo.png">
+<a class="back" href="/"><img src="assets/image/back.png" width="40px"></a>
+</nav>
 
-  <input type="submit" value="検索">
+
+<div class="searchbtn">
+  <a href="#tag">タグ検索</a>
+  <a href="#shiborikomi">絞り込み検索</a>
+  <a href="#kodawari">こだわり検索</a>
+</div>
+
+<div class="new">
+<form action="/search" method="post">
+<div id="tag" class="content">
+  <p>タグ<br><input type="checkbox" name="search[]" value="tag">
+  <input class="newtag" type="text" name="tag" placeholder="タグの検索は1つまでにしてください"></p><br>
+</div>
+<div id="shiborikomi" class="content">
+  <p>店名<br><input type="checkbox" name="search[]" value="store">
+  <input class="text" type="text" name="store"></p><br>
+  <p>氷名<br><input type="checkbox" name="search[]" value="icename">
+  <input class="text" type="text" name="icename"></p><br>
+  <p>最寄駅<br><input type="checkbox" name="search[]" value="station">
+  <input class="text" type="text" name="station"></p><br>
+</div>
+<div id="kodawari" class="content">
+  <p>甘さ<br><input type="checkbox" name="search[]" value="sweet">
+  控えめ<input class="range" type="range" min="1" max="5" step="1" name="sweet">甘い</p><br>
+  <p>氷のタイプ<br><input type="checkbox" name="search[]" value="ice">
+  サラサラ<input class="range" type="range" min="1" max="5" step="1" name="ice">フワフワ</p><br>
+  <p>ボリューム<br><input type="checkbox" name="search[]" value="size">
+  軽い<input class="range" type="range" min="1" max="5" step="1" name="size">重い</p><br>
+  <p>本格度<br><input type="checkbox" name="search[]" value="plo">
+  簡易的<input class="range" type="range" min="1" max="5" step="1" name="plo">本格的</p><br>
+  <p>値段<br><input type="checkbox" name="search[]" value="price">
+  500円<input class="range" type="range" min="1" max="5" step="1" name="price">2000円</p><br>
+</div>
+
+  <input class="submit" type="submit" value="SEARCH">
+  <p class="bun">検索したい項目にはチェックを付けてください</p>
 </form>
 
 

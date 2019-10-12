@@ -1,3 +1,77 @@
-<% if @sweet && @ice %>
-<%= @sweet.store %>
+<nav id="nav">
+<img class="logo" src="/assets/image/logo.png">
+<a class="gosearch" href="/search"><img src="assets/image/search.png" width="30px"></a>
+<% if session[:user] == nil %>
+<a class="inuser" href="/signup"><img src="assets/image/signin.png" width="30px"></a>
+<% else %>
+<a class="outuser" href="/signout"><img src="assets/image/signout.png" width="35px"></a>
+<a class="golist" href="/list"><img src="assets/image/favorite.png" width="37px"></a>
 <% end %>
+<a class="back" href="/"><img src="assets/image/back.png" width="40px"></a>
+</nav>
+
+<div class="box">
+<% @results.each do |result| %>
+<div class="set">
+<% unless result.image.empty? %>
+	<img class="tokoimg" src="<%= result.image %>">
+<% end %>
+<% tagids = ContributionTag.where(contribution_id: result.id) %>
+	<p class="tag"><% tagids.each do |tagid| %>
+	#<%= Tag.find(tagid.tag_id).name %>
+	<% end %></p>
+
+	<div class="yoko"><%= result.store  %></div><br>
+	<div class="yoko"><%= result.icename %></div><br>
+	<div class="yoko"><%= result.station  %></div><br>
+
+	<div class="hyoka">
+	<div class="ml1">控えめ</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if result.sweet_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.sweet_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.sweet_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.sweet_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr1">甘い</div><br>
+	<div class="ml2">サラサラ</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if result.ice_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.ice_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.ice_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.ice_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr2">フワフワ</div><br>
+	<div class="ml3">軽い</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if result.size_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.size_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.size_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.size_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr3">重い</div><br>
+	<div class="ml4">簡易的</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if result.plo_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.plo_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.plo_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.plo_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr4">本格的</div><br>
+	<div class="ml5">500円</div>
+	<div class="yoko"><img src="assets/image/star2.png">
+	<% if result.price_id >= 2 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.price_id >= 3 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+	<% if result.price_id >= 4 %><img src="assets/image/star2.png"><% else %><img src="assets/image/star1.png"><% end %>
+  <% if result.price_id == 5 %><img src="assets/image/star1.png"><% else %><img src="assets/image/star1.png"><% end %>
+	</div><div class="mr5">2000円</div><br>
+	</div>
+
+	<% if session[:user] %>
+	<form action="/result/<%= result.id %>/favorite" method="post">
+	<% if result.favorite == true %>
+	<input class="heart" type="image" src="assets/image/heart2.png">
+	<% else %>
+	<input class="heart" type="image" src="assets/image/heart1.png">
+	<% end %>
+	</form>
+	<% end %>
+</div>
+<% end %>
+</div>
