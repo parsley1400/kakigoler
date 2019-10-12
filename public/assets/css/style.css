@@ -210,7 +210,7 @@ body{
   width:70px;
   height:70px;
   border-radius:35px;
-  right:60px;
+  right:20px;
   bottom:60px;
 }
 
@@ -387,22 +387,6 @@ body{
   left:220px;
   bottom:15px;
 }
-
-/* .searchbtn{
-  width:870px;
-  height:100px;
-  margin:80px auto;
-}
-
-.searchbtn a{
-  text-decoration:none;
-  font-size:20px;
-  margin:50px;
-  background-color:#00b8ee;
-  color:#fff;
-  padding:20px 50px;
-  border-radius:35px;
-} */
 
 .searchbtn a{
   text-decoration:none;
