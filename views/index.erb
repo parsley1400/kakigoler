@@ -66,6 +66,10 @@
 	</div><div class="mr5">2000円</div><br>
 	</div>
 
+  <form action="/<%= contribution.id %>/delete" method="post">
+	<input class="delete" type="image" src="assets/image/delete.png">
+	</form>
+
 	<% if session[:user] %>
 	<form action="/<%= contribution.id %>/favorite" method="post">
 	<% if contribution.favorite == true %>

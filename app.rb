@@ -286,3 +286,9 @@ post '/result/:id/favorite' do
   end
  redirect '/result'
 end
+
+post '/:id/delete' do
+  this = Contribution.find(params[:id])
+  this.delete
+  redirect '/'
+end

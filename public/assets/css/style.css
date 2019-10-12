@@ -289,6 +289,13 @@ body{
   right:10px;
 }
 
+.delete{
+  height:20px;
+  position:absolute;
+  top:312px;
+  left:10px;
+}
+
 .storeimg{
   width:20px;
   height:20px;
